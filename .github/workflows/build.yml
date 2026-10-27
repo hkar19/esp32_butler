@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container: espressif/idf:v6.1   # ESP-IDF v6.1, the version bt.sh requires
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build for ESP32-C6
         shell: bash
         run: . "$IDF_PATH/export.sh" >/dev/null && firmware/bt.sh test-build --target esp32c6
