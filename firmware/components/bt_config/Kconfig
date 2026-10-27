@@ -1,0 +1,25 @@
+menu "Butler defaults"
+
+    config BT_LED_BRIGHTNESS_PCT
+        int "LED brightness (%)"
+        default 10
+        range 1 100
+        help
+            A WS2812 at full brightness is glaring on a desk.
+
+    config BT_WORKING_STALE_S
+        int "A working agent that sends nothing for this long is shown as idle (s)"
+        default 1800
+        range 60 86400
+        help
+            Claude Code sends no hook when you interrupt it with Esc, so the session would stay "working".
+            Too short, and a long build (no hooks while it runs) turns the light idle too early.
+
+    config BT_SESSION_TTL_S
+        int "An agent that sends nothing for this long is forgotten (s)"
+        default 43200
+        range 300 604800
+        help
+            Covers a terminal closed without SessionEnd (killed, crashed, laptop lid closed).
+
+endmenu

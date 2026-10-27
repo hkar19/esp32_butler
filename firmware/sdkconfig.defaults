@@ -1,0 +1,6 @@
+# Things nobody tunes per board. The chip is IDF_TARGET in butler.env; brightness and timeouts are butler.env section 2.
+# 4 MB: the smallest flash on common DevKits; the partitions fit in it, and bigger chips just leave the rest unused.
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y

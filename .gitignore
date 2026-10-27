@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+
+# Private working notes for the AI agent working on this repo: they name people and local paths
+AGENTS.md
+handover.md

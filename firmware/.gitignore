@@ -1,0 +1,12 @@
+.DS_Store
+
+# ESP-IDF build outputs
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+
+# Local settings and the NVS image made from them
+butler.env
+provision-out/
+__pycache__/

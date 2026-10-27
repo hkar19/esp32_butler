@@ -1,0 +1,17 @@
+menu "Butler status LED"
+
+    config BT_LED_GPIO
+        int "GPIO of the WS2812 status LED"
+        default 8
+        help
+            The on-board RGB LED of the ESP32-C6-DevKitC-1 and ESP32-C3-DevKitM-1 is on GPIO8. Check your board's
+            schematic for others (README.md, "Other boards").
+
+    config BT_LED_ORDER_RGB
+        bool "The LED takes its colours in R-G-B order"
+        default y
+        help
+            A WS2812 takes G-R-B, but the LED on the ESP32-C6-DevKitC-1 boards tested so far takes R-G-B.
+            Turn this off if ./bt.sh led-test shows red where it says green.
+
+endmenu

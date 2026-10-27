@@ -1,0 +1,16 @@
+# Builds the firmware from scratch on every push and pull request, the same way ./bt.sh test-build does locally.
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: espressif/idf:v6.1   # ESP-IDF v6.1, the version bt.sh requires
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for ESP32-C6
+        shell: bash
+        run: . "$IDF_PATH/export.sh" >/dev/null && firmware/bt.sh test-build --target esp32c6
