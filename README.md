@@ -250,7 +250,8 @@ the same `id`, and says `@bt {"hello":true,"fw":".."}` when it boots. Every othe
 | `firmware/components/serial_api`                             | The serial API above, on the console UART, and the no-host timeout          |
 | `firmware/bt.sh`, `butler.env.example`, `tools/provision.py` | Build, settings image, flash                                                |
 | `hooks/`                                                     | The Claude Code hook, its installer, and the bridge                         |
-| `.github/workflows/build.yml`                                | CI: the build check below, on every push and pull request                   |
+| `.github/workflows/build.yml`                                | CI: the build check below and the tests, on every push and pull request     |
+| `tests/`                                                     | Tests CI runs: every executable `test_*` file ([CONTRIBUTING](CONTRIBUTING.md)) |
 
 ## Checking the build
 
@@ -266,7 +267,11 @@ or an app too big for its partition, and prints the compiler's error lines. It n
 `butler.env`. Your own build is left alone.
 
 GitHub Actions runs the same check for ESP32-C6 on every push and pull request, in Espressif's `espressif/idf:v6.1`
-Docker image. Please run it before opening a pull request.
+Docker image, then every test in `tests/`. Please run it before opening a pull request; see [CONTRIBUTING](CONTRIBUTING.md).
+
+## Contributing
+
+Fork, branch, and open a pull request to `main`. New features need a test. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

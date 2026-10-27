@@ -1,5 +1,6 @@
-# Builds the firmware from scratch on every push and pull request, the same way ./bt.sh test-build does locally.
-name: Build
+# On every push and pull request: builds the firmware from scratch (as ./bt.sh test-build does locally), then runs
+# every test in tests/ (CONTRIBUTING.md).
+name: Build and test
 
 on:
   push:
@@ -14,3 +15,13 @@ jobs:
       - name: Build for ESP32-C6
         shell: bash
         run: . "$IDF_PATH/export.sh" >/dev/null && firmware/bt.sh test-build --target esp32c6
+      - name: Run the tests (every executable tests/test_*, see CONTRIBUTING.md)
+        shell: bash
+        run: |
+          shopt -s nullglob
+          for t in tests/test_*; do
+            [ -x "$t" ] || { echo "::error::$t is not executable: chmod +x $t"; exit 1; }
+            echo "::group::$t"
+            "$t"
+            echo "::endgroup::"
+          done
